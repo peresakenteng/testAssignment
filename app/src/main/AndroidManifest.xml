@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- CUSTOM DANGEROUS PERMISSION -->
+    <permission
+        android:name="com.example.testassignment.MSE412"
+        android:protectionLevel="dangerous" />
+
+    <!-- USE THE CUSTOM PERMISSION -->
+    <uses-permission android:name="com.example.testassignment.MSE412" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -28,7 +36,8 @@
             android:name=".SecondActivity"
             android:exported="true"
             android:label="@string/title_activity_second"
-            android:theme="@style/Theme.TestAssignment">
+            android:theme="@style/Theme.TestAssignment"
+            android:permission="com.example.testassignment.MSE412">
             <intent-filter>
                 <action android:name="com.example.testassignment.OPEN_SECOND" />
                 <category android:name="android.intent.category.DEFAULT" />

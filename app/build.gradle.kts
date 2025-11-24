@@ -6,15 +6,12 @@ plugins {
 
 android {
     namespace = "com.example.testassignment"
-    compileSdk {
-        version = release(36)
-
-    }
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.testassignment"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -30,13 +27,14 @@ android {
             )
         }
     }
+    
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 
     buildFeatures {
@@ -45,6 +43,7 @@ android {
 }
 
 dependencies {
+    // Implementation dependencies
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -56,11 +55,24 @@ dependencies {
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
+    
+    // Unit testing
     testImplementation(libs.junit)
+    
+    // Android testing
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.ui.test.junit4)
+    
+    // UI Automator testing dependencies
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test:runner:1.5.2")
+    androidTestImplementation("androidx.test:rules:1.5.0")
+    androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
+    androidTestImplementation("org.hamcrest:hamcrest-integration:1.3")
+    
+    // Debug dependencies
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
 }
